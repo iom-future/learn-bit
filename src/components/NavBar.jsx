@@ -5,6 +5,14 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 function NavBar() {
+    useGSAP(()=>{
+        gsap.to(".streak-icon",{
+            y:-5,
+            yoyo: true,
+            repeat: 3,
+           
+        })
+    },[])
   return (
     <nav className='flex justify-between items-center bg-slate-200/80 p-3 rounded-full border-t-2 border-white border-b-2  backdrop-blur-md'>
       <FontAwesomeIcon icon={faBars} />
@@ -20,7 +28,7 @@ function NavBar() {
 
 
     <div className="left-nav-icons  flex gap-2 items-center">
-            <FontAwesomeIcon icon={faFire} className='text-orange-500' />
+            <FontAwesomeIcon icon={faFire} className=' streak-icon text-orange-500' />
             <div className="theme-toggle-icons">
                 <FontAwesomeIcon icon={faMoon} className="hidden" />
               <FontAwesomeIcon icon={faSun}  />
