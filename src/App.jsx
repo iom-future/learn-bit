@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import './App.css'
+import NavBar from './components/NavBar.jsx'
 
 function App() {
   return(
-    <div>
-      <h1>Learn Bit</h1>
+    <div className='app bg-[#fafaf9] w-full p-3'>
+      <NavBar />
     </div>
   )
 }
