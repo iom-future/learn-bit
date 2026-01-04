@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' //components
 import { faBars,faFire,faMoon,faSun,faBookmark } from '@fortawesome/free-solid-svg-icons' //icons
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { useRef } from 'react'
-function NavBar() {
+import { useRef,useContext } from 'react'
+import { AsideNavContext } from './AsideNavContext'
+function NavBar({asideNav}) {
+  let asideNavClass =useContext(AsideNavContext);
     useGSAP(()=>{
         gsap.to(".streak-icon",{
             y:-5,
@@ -12,10 +14,23 @@ function NavBar() {
             repeat: 3,
            
         })
-    },[])
+    },[]);
+
+    //open the aside nav bar
+   const toggleAsideNav=()=>{
+        asideNav.current.classList.toggle(asideNavClass.current);
+             //animation when opening
+                gsap.fromTo(asideNav.current,{opacity:0}, {
+                    duration: 0.8,
+                    opacity: 1,
+                 
+                    ease: "power2.out",
+                });
+            
+    }
   return (
     <nav className='flex justify-between items-center bg-slate-200/80 p-3 rounded-full border-t-2 border-white border-b-2  backdrop-blur-md'>
-      <FontAwesomeIcon icon={faBars} />
+      <FontAwesomeIcon icon={faBars} onClick={toggleAsideNav} />
        
         <div className="streak-counter justify-center w-[70%] items-center gap-2 flex">
            
