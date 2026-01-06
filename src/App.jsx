@@ -1,7 +1,8 @@
-import { useState,useRef } from 'react'
+import {useRef } from 'react'
 import NavBar from './components/NavBar.jsx'
 import AsideNavBar from './components/AsideNavBar.jsx'
 import AsideNavProvider from './components/AsideNavContext.jsx'
+import CalenderGenerator from './components/CalenderGenerator.jsx';
 
 function App() {
   let asideNavClass =useRef("hidden");
@@ -11,6 +12,7 @@ function App() {
       <AsideNavProvider asideNavClass={asideNavClass}>
           <NavBar asideNav={asideNav}  />
           <AsideNavBar asideNav={asideNav} />
+          <CalenderGenerator />
       </AsideNavProvider>
 
        
