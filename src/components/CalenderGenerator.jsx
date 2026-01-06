@@ -1,6 +1,9 @@
 import Calender from './calender';
 import { useState } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' //components
+import { faFire,faX,faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons' //icons
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const CalenderGenerator = () => {
     let dateDefault = new Date;
@@ -21,15 +24,17 @@ let monthIndex = {
 }
 
 //assign the month state that changes
-let [month,setMonth] = useState(dateDefault.getMonth());
-//let day = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
-let userYear = dateDefault.getFullYear()
-let userMonth = monthIndex[month]//||Object.keys(monthIndex)[dateDefault.getMonth()];
+//TODO: change every month variable to calender.month, same for yyear
+let [calender,setCalender] = useState({month:dateDefault.getMonth(),year:dateDefault.getFullYear()});
+
+
+let userMonth = monthIndex[calender.month]//||Object.keys(monthIndex)[dateDefault.getMonth()];
 console.log(userMonth)
-console.log(userYear)
-let date = new Date(userYear,month,1);//year,month,day(1-31)
+console.log(calender)
+let date = new Date(calender.year,calender.month,1);//year,month,day(1-31)
 let dayOfWeek = date.getDay();  //gets the index of the day of the week sunday=0,monday=1 
  console.log(dayOfWeek);
+ console.log(`the month is ${calender.month}`)
 //calender template
 let thirtyDaysMonth= ["september","april","june","november"];
 let thirtyDays = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,""];
@@ -64,12 +69,50 @@ let februaryDays = [
 
     return baseArray;
 }
+const nextMonth = () => {
+  setCalender((currentCalender) => {
+    //if its december, move to next year january
+    if(currentCalender.month === 11){
+      // set month to january and move to the next year
+      return {...currentCalender,month:0,year:currentCalender.year + 1}; // Go to January
+    }
+    //move to the next month as usual
+    return   {...currentCalender,month: currentCalender.month + 1};
+  })
+}
 
+const previousMonth = () => {
+   setCalender((currentCalender) => {
+    //if its december, move to next year january
+    if(currentCalender.month === 0){
+      // set month to january and move to the next year
+      return {...currentCalender,month:11,year:currentCalender.year - 1}; // Go to January
+    }
+    //move to the next month as usual
+    return   {...currentCalender,month: currentCalender.month - 1};
+  })
+}
   return (
-    <section className='flex flex-col justify-center items-center size-[360px] mx-auto'>
-        <div class="w-full text-center mb-4">
-        <h2 className="month inline-block">{userMonth.charAt(0).toUpperCase()+userMonth.slice(1)}</h2>
-        <h2 className="year inline-block">{userYear}</h2>
+    <section className=' streak-calender flex flex-col size-[360px]  items-center h-screen gap-3 fixed w-full z-[200] top-0 right-0 bg-white'>
+       <FontAwesomeIcon icon={faX} className='absolute right-2 top-2' />
+      <header className='flex flex-col justify-center items-center  pt-8 p-2 bg-amber-200 w-full rounded-b-lg'>
+         
+           <FontAwesomeIcon icon={faFire} className=' streak-icon text-orange-500 text-6xl' />
+           <h2 className='text-center text-5xl font-bold '> 5 </h2>
+           <h3 className='font-semibold text-xl'>Days Streak</h3>
+           <p className='text-slate-800'>Knowledge Ninja, keep going!</p>
+      </header>
+     
+      <div className="streak-calender-wrapper border-1 w-[90%] border-gray-200 flex flex-col rounded-lg shadow-md mx-auto p-2 justify-center items-center">
+
+     
+        <div className="w-full text-center mb-4 text-lg font-semibold flex gap-2 justify-between items-center  ">
+          <FontAwesomeIcon icon={faChevronLeft} onClick={ previousMonth} />
+          <div className="date-info-wrapper  flex gap-2">
+              <h2 className="month inline-block ">{userMonth.charAt(0).toUpperCase()+userMonth.slice(1)}</h2>
+              <h2 className="year inline-block ">{calender.year}</h2>
+          </div>
+          <FontAwesomeIcon icon={faChevronRight} onClick={nextMonth} />
         </div>
         
         <div className="flex w-full flex-col gap-2">
@@ -87,6 +130,7 @@ let februaryDays = [
 
             <Calender calenderArray={getCalenderArray()} />
         </div>
+      </div>
     </section>
   )
 }

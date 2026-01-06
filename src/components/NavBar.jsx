@@ -20,11 +20,11 @@ function NavBar({asideNav}) {
    const toggleAsideNav=()=>{
         asideNav.current.classList.toggle(asideNavClass.current);
              //animation when opening
-                gsap.fromTo(asideNav.current,{opacity:0}, {
+                gsap.fromTo(asideNav.current,{opacity:0,x:-30}, {
                     duration: 0.8,
                     opacity: 1,
-                 
-                    ease: "power2.out",
+                    x:0,
+                    ease: "power1.out",
                 });
             
     }
