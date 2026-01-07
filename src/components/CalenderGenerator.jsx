@@ -24,7 +24,7 @@ let monthIndex = {
 }
 
 //assign the month state that changes
-//TODO: change every month variable to calender.month, same for yyear
+
 let [calender,setCalender] = useState({month:dateDefault.getMonth(),year:dateDefault.getFullYear()});
 
 
@@ -92,9 +92,10 @@ const previousMonth = () => {
     return   {...currentCalender,month: currentCalender.month - 1};
   })
 }
+let [todayBookmark,setTodayBookMark] = useState({});
   return (
-    <section className=' streak-calender flex flex-col size-[360px]  items-center h-screen gap-3 fixed w-full z-[200] top-0 right-0 bg-white'>
-       <FontAwesomeIcon icon={faX} className='absolute right-2 top-2' />
+    <section className=' streak-calender flex flex-col size-[360px]  items-center h-screen gap-4 fixed w-full z-[200] top-0 right-0 bg-white'>
+       <FontAwesomeIcon icon={faX} className='absolute right-4 top-4' />
       <header className='flex flex-col justify-center items-center  pt-8 p-2 bg-amber-200 w-full rounded-b-lg'>
          
            <FontAwesomeIcon icon={faFire} className=' streak-icon text-orange-500 text-6xl' />
@@ -103,7 +104,7 @@ const previousMonth = () => {
            <p className='text-slate-800'>Knowledge Ninja, keep going!</p>
       </header>
      
-      <div className="streak-calender-wrapper border-1 w-[90%] border-gray-200 flex flex-col rounded-lg shadow-md mx-auto p-2 justify-center items-center">
+      <div className="streak-calender-wrapper border-1 w-[90%] border-gray-200 flex flex-col rounded-lg shadow-lg mx-auto p-2 justify-center items-center">
 
      
         <div className="w-full text-center mb-4 text-lg font-semibold flex gap-2 justify-between items-center  ">
@@ -128,8 +129,17 @@ const previousMonth = () => {
             <h3>S</h3>
             </div>
 
-            <Calender calenderArray={getCalenderArray()} />
+            <Calender calenderArray={getCalenderArray()} presentDay={dateDefault.getDate()} presentMonth={dateDefault.getMonth()} userCalendarMonth={calender.month} userCalendarYear={calender.year} presentYear={dateDefault.getFullYear()} />
         </div>
+      </div>
+
+      <div className='w-full p-3'>
+        <h3 className='text-xl font-semibold text-left'>Today's Bookmarks</h3>
+        <article>
+          {!(todayBookmark.length>0)?<h5 className='text-center mt-2 text-gray-700'>No Bookmark today</h5>: todayBookmark.map((bookmark)=>(
+            <div key={bookmark.id}></div>
+            ))}
+        </article>
       </div>
     </section>
   )
