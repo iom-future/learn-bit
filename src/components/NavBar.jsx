@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useRef,useContext } from 'react'
 import { AsideNavContext } from './AsideNavContext'
-function NavBar({asideNav}) {
+function NavBar({asideNav,setStreakToggleMode,streakRef}) {
   let asideNavClass =useContext(AsideNavContext);
     useGSAP(()=>{
         gsap.to(".streak-icon",{
@@ -28,6 +28,11 @@ function NavBar({asideNav}) {
                 });
             
     }
+  const openStreakCalendar = ()=>{
+    setStreakToggleMode(true);
+    //animation when opening
+    console.log(`the streak ref is ${streakRef.current}`);
+}
   return (
     <nav className='flex justify-between items-center bg-slate-200/80 p-3 rounded-full border-t-2 border-white border-b-2  backdrop-blur-md'>
       <FontAwesomeIcon icon={faBars} onClick={toggleAsideNav} />
@@ -43,7 +48,7 @@ function NavBar({asideNav}) {
 
 
     <div className="left-nav-icons  flex gap-2 items-center">
-            <FontAwesomeIcon icon={faFire} className=' streak-icon text-orange-500' />
+            <FontAwesomeIcon icon={faFire} className=' streak-icon text-orange-500' onClick={openStreakCalendar} />
             <div className="theme-toggle-icons">
                 <FontAwesomeIcon icon={faMoon} className="hidden" />
               <FontAwesomeIcon icon={faSun}  />

@@ -1,12 +1,22 @@
 import Calender from './calender';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' //components
 import { faFire,faX,faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons' //icons
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
-const CalenderGenerator = () => {
+const CalenderGenerator = ({streakToggleMode,setStreakToggleMode,streakRef}) => {
     let dateDefault = new Date;
+
+    // Inside CalenderGenerator
+useEffect(() => {
+  if (streakToggleMode && streakRef.current) {
+    gsap.fromTo(streakRef.current, 
+      {opacity: 0, x: 30}, 
+      {duration: 0.8, opacity: 1, x: 0, ease: "power1.out"}
+    );
+  }
+}, [streakToggleMode]);
 
 let monthIndex = {
     0: "january",
@@ -93,9 +103,12 @@ const previousMonth = () => {
   })
 }
 let [todayBookmark,setTodayBookMark] = useState({});
+const cancelStreakCalendar = ()=>{
+    setStreakToggleMode(false);
+}
   return (
-    <section className=' streak-calender flex flex-col size-[360px]  items-center h-screen gap-4 fixed w-full z-[200] top-0 right-0 bg-white'>
-       <FontAwesomeIcon icon={faX} className='absolute right-4 top-4' />
+    <section className=' streak-calender flex flex-col size-[360px]  items-center h-screen gap-4 fixed w-full z-[200] top-0 right-0 bg-white' ref={streakRef}>
+       <FontAwesomeIcon icon={faX} className='absolute right-4 top-4' onClick={cancelStreakCalendar} />
       <header className='flex flex-col justify-center items-center  pt-8 p-2 bg-amber-200 w-full rounded-b-lg'>
          
            <FontAwesomeIcon icon={faFire} className=' streak-icon text-orange-500 text-6xl' />
