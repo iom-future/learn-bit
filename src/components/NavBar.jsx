@@ -34,7 +34,7 @@ function NavBar({asideNav,setStreakToggleMode,streakRef}) {
     console.log(`the streak ref is ${streakRef.current}`);
 }
   return (
-    <nav className='flex justify-between items-center bg-slate-200/80 p-3 rounded-full border-t-2 border-white border-b-2  backdrop-blur-md'>
+    <nav className='flex justify-between items-center fixed w-[90%] left-1/2 -translate-x-1/2 top-3 z-[40] bg-slate-200/80 p-3 rounded-full border-t-2 border-white border-b-2  backdrop-blur-md'>
       <FontAwesomeIcon icon={faBars} onClick={toggleAsideNav} />
        
         <div className="streak-counter justify-center w-[70%] items-center gap-2 flex">
