@@ -15,6 +15,8 @@ function App() {
     month: date.getMonth(),
     year: date.getFullYear()
   };
+
+  //? : how do i dynamically make the current date a previous date without using the user time  
   let previousDate ={
       date: date.getDate() ,
       month: date.getMonth(),

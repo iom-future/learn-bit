@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' //components
 import { faPen } from '@fortawesome/free-solid-svg-icons' //icons
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import profilePicture from "./../assets/download (4).jpg"
+import DailyRandomFact from "./DailyRandomFact"
 function DashboardIntro() {
-    let [userProfile,setUserProfile]=useState({name:"User"})
+    let [userProfile,setUserProfile]=useState({name:"User"});
+   
   return (
     <div className=" rounded-b-xl">
         <div className={`dashboard-intro-wrapper w-full h-64 bg-cover bg-center pt-20 p-3   `}>
@@ -14,11 +16,11 @@ function DashboardIntro() {
                 <p>Knowlegde ninja, ready to learn?</p>
             </header>
 
-            <div className="random-fact bg-purple-400 h-24 rounded-lg p-2 px-3 mt-2">
-                <h2 className="text-lg font-semibold text-white">Random Fact of the Day</h2>
+            <div className="random-fact bg-purple-400 min-h-24 rounded-lg p-2 px-3 mt-2">
+                <h2 className="text-lg font-semibold text-purple-900">Random Fact of the Day</h2>
                 <article>
-                    <p className="random-fact-text"></p>
-
+                   
+                     <DailyRandomFact />
                     <div className="fact-icon"></div>
                 </article>
             </div>
