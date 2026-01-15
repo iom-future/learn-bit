@@ -15,7 +15,7 @@ function DailyRandomFact() {
   return (
     //return the fact
     <div>
-        <p className='text-white'>{data[0].fact}</p>
+        <p className='text-black text-lg text-center'>{data[0].fact}</p>
     </div>
   )
 }

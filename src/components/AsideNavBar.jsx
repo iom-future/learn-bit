@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' //components
 import { faX,faTrophy,faFire,faHome,faBookmark,faMoon,faSun } from '@fortawesome/free-solid-svg-icons' //icons
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import profilePicture from "./../assets/download (4).jpg"
+import profilePicture from "./../assets/download (1).jpg"
 import { useRef,useContext } from 'react'
 import { AsideNavContext } from './AsideNavContext'
 
@@ -23,7 +23,7 @@ function AsideNavBar({asideNav}) {
              
              <div className="main-aside-content mt-[50px] flex flex-col gap-12">
                     <div className="profile-img">
-                        <img src={profilePicture} alt="default profile img" className="rounded-full size-40 mx-auto" />
+                        <img src={profilePicture} alt="default profile img" className="rounded-full object-cover object-center  size-40 mx-auto" />
 
                         <div className="profile-intro flex justify-center gap-2 mt-2">
                             <p className='title font-serif'>Noob</p>
