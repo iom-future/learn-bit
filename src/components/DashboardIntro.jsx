@@ -15,10 +15,10 @@ function DashboardIntro() {
              <div className="flex w-full justify-between ">
                    
                     <div className="p-2 ">
-                    <h1 className="relative text-3xl dark:text-white ">Hey ,<span className="font-bold ">{userProfile.name} </span> < FontAwesomeIcon icon={faPen} className="text-xs  absolute top-0 pl-1" /> </h1>
+                    <h1 className="relative text-3xl dark:text-white sm:text-4xl">Hey ,<span className="font-bold ">{userProfile.name} </span> < FontAwesomeIcon icon={faPen} className="text-xs  absolute top-0 pl-1" /> </h1>
                     
                     
-                    <p className="dark:text-white font-medium ">The Genius returns!</p>
+                    <p className="dark:text-white font-medium sm:text-lg">The Genius returns!</p>
 
                    
                     </div>
@@ -36,9 +36,9 @@ function DashboardIntro() {
                 </div>
 
                 <div className="lever-bar-wrapper flex-col   w-full flex">
-                    <div className="flex  items-center gap-2">
-                    <p className="dark:text-white/90">Lv {0}</p>
-                    <div className="level-bar w-[85%] bg-purple-400 h-[5px] rounded-full">
+                    <div className="flex  items-center gap-2 ">
+                    <p className="dark:text-white/90 font-medium ">Lvl <span className="text-lg font-medium"> {0}</span></p>
+                    <div className="level-bar w-[85%] sm:w-[90%] bg-purple-400 h-[5px] rounded-full">
                         <div className="level-progress-bar w-[20%] bg-purple-900 h-full rounded-full"></div>
                     </div> 
                     

@@ -57,12 +57,19 @@ console.log(isNewDay());
   return(
     <div className='app relative bg-[#fafaf9] w-full '>
       <AsideNavProvider asideNavClass={asideNavClass}>
-          <AsideNavBar asideNav={asideNav}   />
-          <NavBar asideNav={asideNav}  streakToggleMode={isStreakCalendarOpen} setStreakToggleMode={setIsSreakCalendarOpen}  streakRef={streakNav} />
-      
+        <div className='md:flex md:h-screen'>
+        <AsideNavBar asideNav={asideNav}   />
+          <div>
+            <NavBar asideNav={asideNav}  streakToggleMode={isStreakCalendarOpen} setStreakToggleMode={setIsSreakCalendarOpen}  streakRef={streakNav} />
+          
+            <DashboardIntro />
+          </div>
+            {isStreakCalendarOpen &&  <CalenderGenerator streakToggleMode={isStreakCalendarOpen} setStreakToggleMode={setIsSreakCalendarOpen} streakRef={streakNav} />}
+        </div>
+        
+       
       </AsideNavProvider>
-  {isStreakCalendarOpen &&  <CalenderGenerator streakToggleMode={isStreakCalendarOpen} setStreakToggleMode={setIsSreakCalendarOpen} streakRef={streakNav} />}
-       <DashboardIntro />
+  
        
       
     </div>

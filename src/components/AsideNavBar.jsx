@@ -16,10 +16,10 @@ function AsideNavBar({asideNav}) {
     }
  
   return (
-    <div className='fixed z-[50] w-full h-full top-0 left-0 md:flex hidden'  ref={asideNav}>
+    <div className='fixed z-[50] w-full h-screen top-0 md:relative left-0 md:flex hidden'  ref={asideNav}>
         <aside className=' aside-nav-bar w-full   z-[50]  h-full  flex '>
-              <div className='aside-wrapper bg-white p-3 relative w-[70%]'>
-            <FontAwesomeIcon icon={faX} className='absolute right-5 top-5' onClick={toggleAsideNav} />
+              <div className='aside-wrapper  bg-white p-3 relative h-full min-w-[300px] '>
+            <FontAwesomeIcon icon={faX} className='absolute right-5 top-5 md:hidden' onClick={toggleAsideNav} />
              
              <div className="main-aside-content mt-[50px] flex flex-col gap-12">
                     <div className="profile-img">
@@ -55,7 +55,7 @@ function AsideNavBar({asideNav}) {
             </div>
 
           </div>
-             <div className="aside-overlay w-[30%] relative z-[50] h-full bg-black/50"></div>
+             <div className="aside-overlay w-full relative md:hidden z-[50] h-full bg-black/50"></div>
         </aside>
 
      
