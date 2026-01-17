@@ -10,7 +10,7 @@ function DashboardIntro() {
    
   return (
     <div className="dashboard-intro rounded-b-xl">
-        <div className={`dashboard-intro-wrapper w-full   pt-20 p-3   `}>
+        <div className={`dashboard-intro-wrapper w-full md:pt-12  pt-24 p-3   `}>
              <header className="flex items-center flex-col gap-2 bg-cover bg-[url(src/assets/blob-scene-haikei.png)] dark:bg-[url(src/assets/blob-scene-haikei1.png)]  p-2 rounded-lg">
              <div className="flex w-full justify-between ">
                    
