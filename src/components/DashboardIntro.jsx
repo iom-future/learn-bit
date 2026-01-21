@@ -4,10 +4,11 @@ import { faBookmark, faBrain, faChevronLeft, faChevronRight, faHexagonNodesBolt,
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import emote from "./../assets/download__4_-removebg-preview.png"
-import DailyRandomFact from "./DailyRandomFact"
+import DailyRandomFact from "./pages/DailyRandomFact"
 function DashboardIntro() {
     let [userProfile,setUserProfile]=useState({name:"User"});
-   
+    
+  
   return (
     <div className="dashboard-intro rounded-b-xl">
         <div className={`dashboard-intro-wrapper w-full md:pt-12  pt-24 p-3   `}>
@@ -65,30 +66,7 @@ function DashboardIntro() {
             </div>
             <div className="fact-container bg-[#F5F5F7]  shadow-[2px_2px_0_0_rgb(168_85_247)] flex  border border-gray-400  min-h-[170px] rounded-lg p-2 px-3 mt-2">
                  
-                <div className="fact-article-wrapper flex flex-col pt-3  gap-10 h-full w-full">
-                   
-                    
-                    <article className="facts flex flex-col gap-8">
-                       
-                        <DailyRandomFact />
-                        <div className="fact-icon-bottom flex  justify-around ">
-                            <FontAwesomeIcon icon={faBookmark} className="text-gray-500 text-lg" />
-                              <FontAwesomeIcon icon={faShareNodes} className="text-gray-500 text-lg" />
-                               <FontAwesomeIcon icon={faMicrochip} className="text-amber-500 text-xl" />
-                        </div>
-                    </article>
-                    <div className="card-control flex justify-between items-center">
-                        <div className="move-left-container  flex size-10 items-center justify-center bg-purple-500 hover:shadow-lg shadow-purple-500  rounded-full p-2  ">
-                        <FontAwesomeIcon icon={faChevronLeft} className="text-lg text-white" />
-                    </div>
-                    <div className="move-right-container flex size-10 items-center justify-center bg-purple-500 hover:shadow-lg shadow-purple-500 rounded-full p-2">
-                       <FontAwesomeIcon icon={faChevronRight} className="text-lg text-white" />
-                    </div>
-                   
-                    </div>
-             
-               
-                </div>
+            <DailyRandomFact />
             </div>
         </div>
        

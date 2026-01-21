@@ -54,6 +54,10 @@ console.log(isNewDay());
 
   //for toggling the streak cakender
   let [isStreakCalendarOpen,setIsSreakCalendarOpen] = useState(false);
+
+  //for refreshing knowledge
+
+  
   return(
     <div className='app relative bg-[#fafaf9] w-full '>
       <AsideNavProvider asideNavClass={asideNavClass}>
